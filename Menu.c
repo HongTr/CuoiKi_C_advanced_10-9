@@ -203,20 +203,23 @@ int main(){
                     }
                     else printf("Ban chua nap do thi!\n");
                     break;
-                case 9:;
-                    FILE* target;
-                    target = fopen("GhiRaFile.txt", "w+");
-                    JRB temp;
-                    int sl_tx, tx[10];
-                    jrb_traverse(temp, graph.vertices){
-                        sl_tx = indegree(graph, jval_i(temp->key), tx);
-                        fprintf(target, "%c ", reconvert(jval_i(temp->key)));
-                        for (int i = 0; i < sl_tx; i++){
-                            fprintf(target, "%c ", reconvert(tx[i]));
+                case 9:
+                    if (flag){
+                        FILE* target;
+                        target = fopen("GhiRaFile.txt", "w+");
+                        JRB temp;
+                        int sl_tx, tx[10];
+                        jrb_traverse(temp, graph.vertices){
+                            sl_tx = indegree(graph, jval_i(temp->key), tx);
+                            fprintf(target, "%c ", reconvert(jval_i(temp->key)));
+                            for (int i = 0; i < sl_tx; i++){
+                                fprintf(target, "%c ", reconvert(tx[i]));
+                            }
+                            fprintf(target, "\n");
                         }
-                        fprintf(target, "\n");
+                        fclose(target);
                     }
-                    fclose(target);
+                    else printf("Ban chua nap do thi!\n");
                     break;
                 case 10: printf("Ban da thoat chuong trinh!\n");
                     break;
